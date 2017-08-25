@@ -6,7 +6,7 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-    @list.tasks.build
+    @task = @list.tasks.build
   end
 
   def create
