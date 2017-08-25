@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170825043047) do
+ActiveRecord::Schema.define(version: 20170824221837) do
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
@@ -20,39 +20,27 @@ ActiveRecord::Schema.define(version: 20170825043047) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
+    t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "task_tags", force: :cascade do |t|
-    t.string "task_id"
-    t.string "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_tags_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string "name"
-    t.text "description"
     t.integer "state", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.date "due_date"
-    t.integer "list_id"
-  end
-
-  create_table "user_lists", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "list_id"
+    t.datetime "due_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "user_tasks", force: :cascade do |t|
-    t.string "user_id"
-    t.string "task_id"
+    t.integer "user_id"
+    t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_user_tasks_on_task_id"
+    t.index ["user_id"], name: "index_user_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
