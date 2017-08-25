@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row" id="dverror">
+    <div class="col s6 offset-s3">
+      <p><%= devise_error_messages! %></p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col s6 offset-s3 z-depth-2" id="panell">
+      <h2 id="title">Sign up</h2>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+        <div class="input-field" id="username">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="input-field" id="password">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="input-field" id="password">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <div class="waves-effect waves-light btn" id="loginbtn">
+          <%= f.submit "Sign up" %>
+        </div>
+      <% end %>
+
+      <div class="col">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+
