@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-    devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :twitter]
+    devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :user_lists
   has_many :user_tasks

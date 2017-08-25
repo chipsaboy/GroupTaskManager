@@ -33,8 +33,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-twitter'
 gem 'faker'
 gem 'figaro'
 
