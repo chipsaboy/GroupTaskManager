@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+	before_action :find_list, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!
 
   def index
     @lists = List.all
@@ -19,21 +21,31 @@ class ListsController < ApplicationController
   end
 
   def show
-  	@list = List.find(params[:id])
+  	@tasks = @list.tasks
   	@task = Task.new
   end
 
+  def update
+  	if @list.update(list_params)
+  		redirect_to @list
+  	else
+  		render :edit
+  	end
+  end
+
   def destroy
-    @list = List.find(params[:id])
-    @task = Task.find_by(params[:id])
-    @task.destroy
-    redirect_to @list
+    @list.destroy
+    redirect_to lists_path
   end
 
   private
 
+  def find_list
+  	@list = List.find(params[:id])
+  end
+
   def list_params
-    params.require(:list).permit(:name, tasks_attributes: [:list_id, :name, :description, :state, :due_date])
+    params.require(:list).permit(:name)
   end
 
 end
