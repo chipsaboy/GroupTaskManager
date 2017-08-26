@@ -1,25 +1,34 @@
 class TasksController < ApplicationController
+	before_action :find_list
+	before_action :find_task, only: [:update, :destroy]
 
   def create
     @task = @list.tasks.build(task_params)
     if @task.save
       redirect_to list_path(@list)
     else
-      render @list, alert: @task.errors.full_messages
+      redirect_to list_path(@list), alert: @task.errors.full_messages
     end
   end
 
   def update
-    @task = @list.tasks.find(params[:id])
     @task.update(task_params)
     if @task.save
       redirect_to list_path(@list)
     else
-      render @list, alert: @task.errors.full_messages
+      redirect_to list_path(@list), alert: @task.errors.full_messages
     end
   end
 
+  def destroy
+  	@task.destroy
+  	redirect_to list_path(@list)
+  end
+
   private
+
+  def find_task
+  	@task = @list.tasks.find(params[:id])
 
   def find_list
     @list = List.find(params[:list_id])
