@@ -8,11 +8,6 @@ class User < ApplicationRecord
   has_many :user_tasks
   has_many :lists, through: :user_lists
   has_many :tasks, through: :user_tasks
-  after_initialize :init
-
-  def init
-  	self.name ||= "User"
-  end
 
   def self.from_omniauth(auth)
 	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
