@@ -1,10 +1,12 @@
 class Task < ApplicationRecord
-  validates :list_id
-  validates :name
+  validates :list_id, :name, presence: true
   belongs_to :list
-  has_many :tags
+  has_many :task_tags
+  has_many :tags, through: :task_tags
   has_many :user_tasks
   has_many :users, through: :user_tasks
+  accepts_nested_attributes_for :tags
+  accepts_nested_attributes_for :users
 
   def tags_attributes=(tag_attributes)
     tag_attributes.values.each do |tag_attribute|
