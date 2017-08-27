@@ -13,38 +13,5 @@
  *= require_tree .
  *= require_self
  */
- @import "materialize";
- @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-
-#panell{
-     margin-top: 100px;
-     padding: 0px;
-   }
-   #loginbtn{
-     float: right;
-     margin-bottom: 10px;
-     margin-right: 10px;
-   }
-   #title{
-     background-color: #2bbbad;
-     color: white;
-     padding: 8px;
-     margin-top: 0px
-   }
-   form{
-     padding:0px;
-     border-radius: 3px;
-     box-sizing: border-box;
-   }
-   #username,#password{
-    margin-left: 20px;
-    margin-right: 20px;
-   }
-   #checkbox{
-    margin-left: 30px;
-   }
-
-.alert{
-	margin-top: 50px;
-	padding: 0px;
-}
+@import "semantic-ui";
+@import "semantic-ui/collections/menu";
