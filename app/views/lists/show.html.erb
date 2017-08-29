@@ -10,3 +10,17 @@
     <% end %>
 	<%= f.submit %>
 <% end %>
+
+<% @tasks.each do |t| %>
+<ul>
+	<li><%= t.name %>
+		<%= t.due_date %>
+		<% t.users.each do |n| %>
+			<%= n.email %>
+		<% end %>
+		<% t.tags.each do |t| %>
+			<%= t.name %>
+		<% end %>
+	</li>
+</ul>
+<% end %>
