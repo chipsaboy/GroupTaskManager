@@ -1,0 +1,6 @@
+<%= form_for(@list) do |f| %>
+	<ul>
+		<h2>List Name: <%= f.text_field :name, placeholder: "New List" %></h2>
+		<%= f.submit %>
+	</ul>
+<% end %>
