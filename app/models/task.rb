@@ -1,10 +1,10 @@
 class Task < ApplicationRecord
   validates :list_id, :name, presence: true
   belongs_to :list
-  has_many :task_tags
+  has_many :task_tags, dependent: :destroy
   has_many :tags, through: :task_tags
   has_many :user_tasks
-  has_many :users, through: :user_tasks
+  has_many :users, through: :user_tasks, dependent: :destroy
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :users
 
