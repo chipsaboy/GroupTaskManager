@@ -1,15 +1,5 @@
 <h2><%= @list.name %></h2>
-<%= form_for([@list, @task]) do |f| %>
-	<%= f.text_field :name, placeholder: "New Task" %>
-	<%= f.label :due_date %>
-	<%= f.datetime_select :due_date, class: "datepicker"%>
-	<%= f.collection_check_boxes :user_ids, User.all, :id, :email %>
-	<%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
-	<%= f.fields_for :tags, @task.tags.build do |tag_fields| %>
-    <%= tag_fields.text_field :name %>
-    <% end %>
-	<%= f.submit %>
-<% end %>
+<%= render partial: 'tasks/task', locals: { :list => @list, :task => @task } %>
 
 <% @tasks.each do |t| %>
 <ul>

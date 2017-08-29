@@ -1,0 +1,5 @@
+<h2>Here are all of your current tasks:</h2>
+
+<% @tasks.each do |task| %>
+	<h3><%= link_to task.name, list_path(task.list_id) %></h3>
+<% end %>
