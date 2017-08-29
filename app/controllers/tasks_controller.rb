@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
-	before_action :find_list
+	before_action :find_list, except: [:index]
 	before_action :find_task, only: [:update, :destroy]
+
+  def index
+    @tasks = current_user.tasks
+  end
 
   def create
     @task = @list.tasks.build(task_params)
