@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-	before_action :find_list, except: [:index]
-	before_action :find_task, only: [:update, :destroy]
+	before_action :find_list, except: [:index, :destroy]
+	before_action :find_task, only: [:update]
 
   def index
     @tasks = current_user.tasks
@@ -25,8 +25,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id])
   	@task.destroy
-  	redirect_to list_path(@list)
+  	redirect_to list_path(@task.list)
   end
 
   private

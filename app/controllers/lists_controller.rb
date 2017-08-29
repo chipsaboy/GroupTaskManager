@@ -13,7 +13,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(list_params)
+    @list = current_user.lists.build(list_params)
     if @list.save
       redirect_to @list
     else
@@ -35,8 +35,12 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list.destroy
-    redirect_to lists_path
+    if @list.user_id == current_user.id
+      @list.destroy
+      redirect_to lists_path
+    else
+      redirect_to list_path
+    end
   end
 
   private
@@ -46,7 +50,7 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :user_id)
   end
 
 end
