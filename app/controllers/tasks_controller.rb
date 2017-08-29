@@ -29,12 +29,13 @@ class TasksController < ApplicationController
 
   def find_task
   	@task = @list.tasks.find(params[:id])
+  end
 
   def find_list
     @list = List.find(params[:list_id])
   end
 
   def task_params
-    params.require(:task).permit(:name, :state, :due_date, :list_id, user_ids:[], tag_ids:[])
+    params.require(:task).permit(:name, :state, :due_date, :list_id, user_ids:[], users_attributes: [:name, :email], tag_ids:[], tags_attributes: [:name, :task_id])
   end
 end
