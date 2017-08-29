@@ -14,7 +14,8 @@
 <% @tasks.each do |t| %>
 <ul>
 	<li><%= t.name %>
-		<%= t.due_date %>
+		<%= display_date(t.due_date) %>
+		<%= time_remaining(t.due_date) %>
 		<% t.users.each do |n| %>
 			<%= n.email %>
 		<% end %>
