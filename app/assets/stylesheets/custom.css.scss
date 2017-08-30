@@ -1,0 +1,139 @@
+
+body {
+    position: relative;
+    overflow-y: auto;
+    padding-top: 70px; /* padding for fixed navbar */
+}
+
+section.login-form {
+  font: 16px/2em Helvetica Neue, san-serif;
+  margin: 50px auto;
+  max-width: 400px;
+}
+
+section div.field {
+  padding: 1px;
+}
+  div.field input,
+  div.field button {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  div.field > div {
+    text-align: center;
+  }
+
+section div.field a {
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 50px;
+  color: #fff;
+}
+
+div.logo {
+  padding-top: 3em;
+  padding-bottom: -1em;
+  display:block;
+  margin:auto;
+}
+
+img.logo {
+  max-width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.fb-login {
+  margin: 10px 100px;
+  max-width: 200px;
+}
+
+.btn-login {
+  color: #FFFFFF;
+  background-color: #35A7FF;
+  border-color: #FFFFFF;
+}
+
+.btn-login:hover,
+.btn-login:focus,
+.btn-login:active,
+.btn-login.active,
+.open .dropdown-toggle.btn-login {
+  color: #FFFFFF;
+  background-color: #6BF178;
+  border-color: #FFFFFF;
+}
+
+.btn-login:active,
+.btn-login.active,
+.open .dropdown-toggle.btn-login {
+  background-image: none;
+}
+
+.btn-login.disabled,
+.btn-login[disabled],
+fieldset[disabled] .btn-login,
+.btn-login.disabled:hover,
+.btn-login[disabled]:hover,
+fieldset[disabled] .btn-login:hover,
+.btn-login.disabled:focus,
+.btn-login[disabled]:focus,
+fieldset[disabled] .btn-login:focus,
+.btn-login.disabled:active,
+.btn-login[disabled]:active,
+fieldset[disabled] .btn-login:active,
+.btn-login.disabled.active,
+.btn-login[disabled].active,
+fieldset[disabled] .btn-login.active {
+  background-color: #35A7FF;
+  border-color: #FFFFFF;
+}
+
+.btn-login .badge {
+  color: #35A7FF;
+  background-color: #FFFFFF;
+}
+
+.btn-delete {
+  background-color: #FFE74C;
+}
+
+.btn-delete:hover,
+.btn-delete:focus,
+.btn-delete:active,
+.btn-delete.active,
+.open .dropdown-toggle.btn-delete {
+  color: #FFFFFF;
+  background-color: #FF5964;
+  border-color: #FFFFFF;
+}
+
+/*flash*/
+.alert-error {
+    background-color: #FF5964;
+    border-color: #FF5964;
+    color: #FFFFFF;
+    text-align: left;
+ }
+
+.alert-alert {
+    background-color: #FF5964;
+    border-color: #FF5964;
+    color: #FFFFFF;
+    text-align: left;
+ }
+
+.alert-success {
+    background-color: #6BF178;
+    border-color: #6BF178;
+    color: #FFFFFF;
+    text-align: left;
+ }
+
+.alert-notice {
+    background-color: #6BF178;
+    border-color: #6BF178;
+    color: #FFFFFF;
+    text-align: left;
+ }

@@ -14,9 +14,3 @@
  *= require_self
  */
 @import "bootstrap";
-
-body {
-    position: relative;
-    overflow-y: auto;
-    padding-top: 70px; /* padding for fixed navbar */
-}

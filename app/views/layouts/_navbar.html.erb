@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #35A7FF;">
+	    <div class="container">
+	        <a class="navbar-brand" href="/home">GroupTaskManager</a>
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCodeply">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	        <div class="collapse navbar-collapse" id="navbarCodeply">
+	            <ul class="navbar-nav">
+	            	<% if current_user %>
+		                <li class="nav-item">
+		                    <a class="nav-link" href="/tasks">My Tasks</a>
+		                </li>
+		                <li class="nav-item dropdown">
+					        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					          Lists
+					        </a>
+					        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					           <%= link_to "New List", new_list_path, class: "dropdown-item" %>
+					           <%= link_to "All Lists", lists_path, class: "dropdown-item" %>
+					        </div>
+				      	</li>
+				    <% end %>
+	            </ul>
+	            <ul class="navbar-nav ml-auto">
+	            	<% if current_user %>
+	            		<li class="nav-item dropdown">
+					        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" helvetica-haspopup="true" helvetica-expanded="false">
+					          <%= current_user.email %>
+					        </a>
+					        <div class="dropdown-menu" helvetica-labelledby="navbarDropdownMenuLink">
+					           <%= link_to "Change Profile/Password", edit_user_registration_path, class: "dropdown-item" %>
+					           <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item" %>
+					        </div>
+				      	</li>
+			        <% else %>
+			        	<li class="nav-item">
+			                <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+			            </li>
+			            <li class="nav-item">
+			                <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+			            </li>
+			        <% end %>
+		        </ul>
+	        </div>
+	    </div>
+	</nav>
