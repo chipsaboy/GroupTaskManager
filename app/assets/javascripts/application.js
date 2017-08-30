@@ -11,7 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require semantic-ui
+//= require popper
+//= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .

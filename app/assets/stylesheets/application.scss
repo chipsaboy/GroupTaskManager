@@ -13,5 +13,10 @@
  *= require_tree .
  *= require_self
  */
-@import "semantic-ui";
-@import "semantic-ui/collections/menu";
+@import "bootstrap";
+
+body {
+    position: relative;
+    overflow-y: auto;
+    padding-top: 70px; /* padding for fixed navbar */
+}
