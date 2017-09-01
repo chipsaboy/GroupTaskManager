@@ -25,11 +25,11 @@
 	            	<% if current_user %>
 	            		<li class="nav-item dropdown">
 					        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" helvetica-haspopup="true" helvetica-expanded="false">
-					          <%= current_user.email %>
+					          <%= current_user.name %>
 					        </a>
 					        <div class="dropdown-menu" helvetica-labelledby="navbarDropdownMenuLink">
-					           <%= link_to "Change Profile/Password", edit_user_registration_path, class: "dropdown-item" %>
-					           <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item" %>
+					           <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
+					           <%= link_to "Log Out", destroy_user_session_path, class: "dropdown-item" %>
 					        </div>
 				      	</li>
 			        <% else %>
