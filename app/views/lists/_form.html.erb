@@ -1,6 +1,4 @@
 <%= form_for(list) do |f| %>
-	<ul>
-		<h3>List Name: <%= f.text_field :name, placeholder: "New List" %></h3>
-		<%= f.submit %>
-	</ul>
+	<h3>List Name: <%= f.text_field :name, class: "col-6 flex-sm-column form-control" %></h3>
+	<%= f.submit "Submit", class: "btn btn-xs btn-login"%>
 <% end %>
