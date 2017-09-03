@@ -5,10 +5,14 @@ class Task < ApplicationRecord
   has_many :tags, through: :task_tags
   has_many :user_tasks
   has_many :users, through: :user_tasks, dependent: :destroy
-  accepts_nested_attributes_for :tags
+  accepts_nested_attributes_for :tags, :reject_if => :all_blank
   accepts_nested_attributes_for :users
 
   default_scope { order(due_date: :desc) }
+
+  def self.updated_tasks
+    self.all.order(updated_at: :desc)
+  end
 
   def tags_attributes=(tag_attributes)
     tag_attributes.values.each do |tag_attribute|

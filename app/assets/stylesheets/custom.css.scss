@@ -1,4 +1,4 @@
-
+// navbar css
 body {
     position: relative;
     overflow-y: auto;
@@ -6,6 +6,7 @@ body {
     padding-bottom: 100px;
 }
 
+// login and sign up
 section.login-form {
   font: 16px/2em Helvetica Neue, san-serif;
   margin: 50px auto;
@@ -50,6 +51,7 @@ img.fb-login {
   max-width: 200px;
 }
 
+// button styles
 .btn-login {
   color: #FFFFFF;
   background-color: #35A7FF;

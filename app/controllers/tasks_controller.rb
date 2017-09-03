@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-	before_action :find_list, except: [:index, :destroy]
+	before_action :find_list, except: [:index, :updated_tasks, :destroy]
 	before_action :find_task, only: [:edit, :update]
 
   def index
@@ -13,6 +13,10 @@ class TasksController < ApplicationController
     else
       redirect_to list_path(@list), alert: @task.errors.full_messages
     end
+  end
+
+  def updated_tasks
+    @tasks = Task.updated_tasks
   end
 
   def edit
