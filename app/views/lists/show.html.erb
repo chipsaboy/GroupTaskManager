@@ -10,7 +10,11 @@
 			<div class="item">
 				<h4 style="color: #35A7FF"><%= task.name %></h4>
 				<p>Due Date: <%= pretty_date(task.due_date) %> ||
-				   Time remaining: <%= time_remaining(task.due_date) %>
+				   <% if task.due_date > DateTime.now %>
+				   		Time remaining: <%= time_remaining(task.due_date) %>
+				   <% else %>
+				   		Time remaining: Expired
+				   <% end %>
 				</p>
 				<p>Assigned to:
 					<% task.users.each do |u| %>

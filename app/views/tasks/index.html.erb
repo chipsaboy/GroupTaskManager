@@ -4,7 +4,11 @@
 		<% @tasks.each do |task| %>
 		<div class="item">
 			<div class="item"><%= link_to task.name, list_path(task.list_id) %></div>
-			<p>Time remaining: <%= time_remaining(task.due_date) %></p>
+			<% if task.due_date > DateTime.now %>
+		   	    Time remaining: <%= time_remaining(task.due_date) %>
+		   	<% else %>
+		   	    Time remaining: Expired
+		    <% end %><br>
 			<p style="color: #FF5964">
 				<% task.tags.each do |t| %>
 				<%= t.name %>
