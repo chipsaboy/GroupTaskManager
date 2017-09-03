@@ -8,6 +8,8 @@ class Task < ApplicationRecord
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :users
 
+  default_scope { order(due_date: :desc) }
+
   def tags_attributes=(tag_attributes)
     tag_attributes.values.each do |tag_attribute|
       tag = Tag.find_or_create_by(tag_attribute)

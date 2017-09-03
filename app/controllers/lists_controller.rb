@@ -15,9 +15,9 @@ class ListsController < ApplicationController
   def create
     @list = current_user.lists.build(list_params)
     if @list.save
-      redirect_to @list
+      redirect_to @list, notice: "List Successfully Created"
     else
-      render :new
+      render :new, alert: @list.errors.fullmessages
     end
   end
 
@@ -26,20 +26,23 @@ class ListsController < ApplicationController
   	@task = Task.new
   end
 
+  def edit
+  end
+
   def update
   	if @list.update(list_params)
-  		redirect_to @list
+  		redirect_to @list, notice: "List Successfully Updated"
   	else
-  		render :edit
+  		render :edit, alert: @list.errors.fullmessages
   	end
   end
 
   def destroy
     if @list.user_id == current_user.id
       @list.destroy
-      redirect_to lists_path
+      redirect_to lists_path, notice: "List Deleted"
     else
-      redirect_to list_path
+      redirect_to list_path, alert: @list.errors.fullmessages
     end
   end
 

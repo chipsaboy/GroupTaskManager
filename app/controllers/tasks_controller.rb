@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 	before_action :find_list, except: [:index, :destroy]
-	before_action :find_task, only: [:update]
+	before_action :find_task, only: [:edit, :update]
 
   def index
     @tasks = current_user.tasks
@@ -9,16 +9,19 @@ class TasksController < ApplicationController
   def create
     @task = @list.tasks.build(task_params)
     if @task.save
-      redirect_to list_path(@list)
+      redirect_to list_path(@list), notice: "Task Successfully Created"
     else
       redirect_to list_path(@list), alert: @task.errors.full_messages
     end
   end
 
+  def edit
+  end
+
   def update
     @task.update(task_params)
     if @task.save
-      redirect_to list_path(@list)
+      redirect_to list_path(@list), notice: "Task Successfully Updated"
     else
       redirect_to list_path(@list), alert: @task.errors.full_messages
     end
@@ -27,7 +30,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
   	@task.destroy
-  	redirect_to list_path(@task.list)
+  	redirect_to list_path(@task.list), notice: "Task Completed"
   end
 
   private
