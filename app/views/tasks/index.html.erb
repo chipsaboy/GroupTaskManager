@@ -1,5 +1,20 @@
-<h2>Here are all of your current tasks:</h2>
-
-<% @tasks.each do |task| %>
-	<h3><%= link_to task.name, list_path(task.list_id) %></h3>
-<% end %>
+<div class="ui doubling stackable grid container">
+	<h2>Here are all of your current tasks:</h2><br>
+	<div class="ui relaxed divided items">
+		<% @tasks.each do |task| %>
+		<div class="item">
+			<div class="item"><%= link_to task.name, list_path(task.list_id) %></div>
+			<p>Time remaining: <%= time_remaining(task.due_date) %></p>
+			<p style="color: #FF5964">
+				<% task.tags.each do |t| %>
+				<%= t.name %>
+				<% end %>
+			</p>
+			<div class="flex-column">
+				<%= button_to "Completed?", list_task_path(id: task.id, list_id: task.list.id), class: "btn btn-xs btn-login", method: :delete %><br>
+			</div>
+			<br>
+		</div>
+		<% end %>
+	</div>
+</div>
