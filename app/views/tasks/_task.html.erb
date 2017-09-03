@@ -1,11 +1,29 @@
 <%= form_for([list, task]) do |f| %>
-	<%= f.text_field :name, placeholder: "New Task" %>
-	<%= f.label :due_date %>
-	<%= f.datetime_select :due_date, ampm: true %>
-	<%= f.collection_check_boxes :user_ids, User.all, :id, :email %>
-	<%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
-	<%= f.fields_for :tags, task.tags.build do |tag_fields| %>
-    <%= tag_fields.text_field :name %>
-    <% end %>
-	<%= f.submit %>
+	<div class="field">
+		<%= f.text_field :name, placeholder: "New Task", class: "col-6 flex-sm-column form-control" %>
+	</div>
+	<div class="field">
+		<%= f.label :due_date %>
+	</div>
+	<div class="field">
+		<%= f.datetime_select :due_date, ampm: true %>
+	</div><br>
+	<div class="dropdown">
+		<%= f.label "Assign a User" %>
+		<%= f.select :user_ids, User.all.collect {|t| [t.email, t.id]}, {}, {prompt: "Assign a User"} %>
+	</div>
+	<div>
+		<%= f.label "Choose from Current Tags" %>
+	</div>
+	<div>
+		<%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {}, :multiple => true %>
+	</div>
+	<div>
+		<%= f.label "or Assign a New Tag:" %>
+		<%= f.fields_for :tags, task.tags.build do |tag_fields| %>
+			<%= tag_fields.text_field :name, class: "col-3 flex-sm-column form-control", placeholder: "New Tag"%>
+    	<% end %>
+	</div>
+	<br>
+	<%= f.submit "Submit", class: "btn btn-xs btn-login" %>
 <% end %>
