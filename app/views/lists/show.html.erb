@@ -1,3 +1,4 @@
+<%= render partial: 'lists/errors', locals: { object: @list, nested_models: @list.tasks } %>
 <h2><%= @list.name %></h2>
 <%= render partial: 'tasks/task', locals: { :list => @list, :task => @task } %>
 

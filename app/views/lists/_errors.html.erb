@@ -1,0 +1,28 @@
+<% if object.errors.any? %>
+  <div class="error-messages">
+    <h2><%= pluralize(object.errors.count, "error") %>
+      prohibited this <%= object.class.to_s.underscore.humanize.downcase %>
+      from being saved:</h2>
+    <ul>
+      <% object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% if defined?(nested_models) && nested_models.any? %>
+      Nested Model(s) Errors:
+      <ul>
+        <% nested_models.each do |nested_model| %>
+          <% unless nested_model.valid? %>
+            <li>
+              <ul>
+                <% nested_model.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+<% end %>
