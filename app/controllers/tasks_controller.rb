@@ -27,7 +27,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to list_path(@list), notice: "Task Successfully Updated"
     else
-      redirect_to list_path(@list), alert: @task.errors.full_messages
+      render :edit, alert: @task.errors.full_messages
     end
   end
 

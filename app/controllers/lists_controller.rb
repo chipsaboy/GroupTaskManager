@@ -17,7 +17,7 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to @list, notice: "List Successfully Created"
     else
-      render :new, alert: @list.errors.fullmessages
+      render :new, alert: @list.errors.full_messages
     end
   end
 
@@ -33,7 +33,7 @@ class ListsController < ApplicationController
   	if @list.update(list_params)
   		redirect_to @list, notice: "List Successfully Updated"
   	else
-  		render :edit, alert: @list.errors.fullmessages
+  		render :edit, alert: @list.errors.full_messages
   	end
   end
 
@@ -42,7 +42,7 @@ class ListsController < ApplicationController
       @list.destroy
       redirect_to lists_path, notice: "List Deleted"
     else
-      redirect_to list_path, alert: @list.errors.fullmessages
+      redirect_to @list, alert: @list.errors.full_messages
     end
   end
 
