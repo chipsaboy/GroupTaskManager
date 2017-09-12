@@ -12,4 +12,8 @@ module DeviseHelper
 
     html.html_safe
   end
+
+  def facebooked
+    current_user.provider == "facebook"
+  end
 end
