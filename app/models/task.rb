@@ -10,8 +10,8 @@ class Task < ApplicationRecord
 
   default_scope { order(due_date: :desc) }
 
-  def self.updated_tasks
-    self.all.order(updated_at: :desc)
+  def self.recent_tasks
+    self.all.order(created_at: :desc)
   end
 
   def tags_attributes=(tag_attributes)

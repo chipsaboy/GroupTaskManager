@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-	before_action :find_list, except: [:index, :updated_tasks, :destroy]
+	before_action :find_list, except: [:index, :recent, :destroy]
 	before_action :find_task, only: [:edit, :update]
 
   def index
@@ -15,8 +15,8 @@ class TasksController < ApplicationController
     end
   end
 
-  def updated_tasks
-    @tasks = Task.updated_tasks
+  def recent
+    @tasks = Task.recent_tasks
   end
 
   def edit
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
   	@task.destroy
-  	redirect_to tasks_path, notice: "Task Completed"
+  	redirect_to request.referrer, notice: "Task Completed"
   end
 
   private
