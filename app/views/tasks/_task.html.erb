@@ -10,7 +10,7 @@
 	</div><br>
 	<div class="dropdown">
 		<%= f.label "Assign a User" %>
-		<%= f.select :user_ids, User.all.collect {|t| [t.name, t.id]}, {}, {prompt: "Assign a User"} %>
+		<%= f.select :user_ids, User.order("name DESC").collect {|t| [t.name, t.id]}, {}, {prompt: "Assign a User"} %>
 	</div>
 	<% if Tag.any? %>
 		<div>

@@ -12,7 +12,7 @@
 		   		Time remaining: Expired
 		   <% end %>
 		</p>
-		<% if !task.users.exists?(name: current_user.name) %>
+		<% if !allowed_complete?(task) %>
 			<p>Assigned to:
 				<% task.users.each do |u| %>
 					<%= u.name %>
@@ -23,9 +23,9 @@
 			<% task.tags.each do |t| %>
 			<%= t.name %>
 			<% end %>
-			<% if task.users.exists?(name: current_user.name) %>
+			<% if allowed_complete?(task) %>
 			<%= button_to "Completed?", list_task_path(id: task.id, list_id: task.list.id), class: "btn btn-xs btn-login sidebs", method: :delete %>
-		<% end %>
+			<% end %>
 		</p>
 	</div>
 	<br>
