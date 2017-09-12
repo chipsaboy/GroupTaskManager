@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  validates :list_id, :name, presence: true
+  validates :list_id, :name, presence: true, length: { maximum: 140 }
   belongs_to :list
   has_many :task_tags, dependent: :destroy
   has_many :tags, through: :task_tags
