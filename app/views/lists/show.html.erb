@@ -6,41 +6,13 @@
 <div class="ui doubling stackable grid container">
 	<h2>Current Tasks:</h2><br>
 	<div class="ui relaxed divided items">
-		<% if @tasks.any? %>
-			<% @tasks.each do |task| %>
-			<div class="item">
-				<h4 style="color: #35A7FF"><%= task.name %></h4>
-				<p>Due Date: <%= pretty_date(task.due_date) %> ||
-				   <% if task.due_date > DateTime.now %>
-				   		Time remaining: <%= time_remaining(task.due_date) %>
-				   <% else %>
-				   		Time remaining: Expired
-				   <% end %>
-				</p>
-				<p>Assigned to:
-					<% task.users.each do |u| %>
-						<%= u.name %>
-					<% end %>
-				</p>
-				<p style="color: #FF5964">
-					<% task.tags.each do |t| %>
-					<%= t.name %>
-					<% end %>
-				</p>
-				<%= link_to "Edit Task", edit_list_task_path(id: task.id, list_id: task.list.id), class: "btn btn-xs btn-login"%>
-			</div>
-			<br>
-			<% end %>
-		<% else %>
-			<h5>All Completed</h5>
-		<% end %>
+		<%= render partial: 'tasks/index', locals: { :task => @task } %>
 		<br>
 	</div>
 </div>
 
 <% if @list.user_id == current_user.id %>
-	<%= link_to "Edit List?", edit_list_path(@list), class: "btn btn-xs btn-login" %>
-	<br>
-	<%= link_to "Delete List?", list_path(@list), method: :delete, class: "btn btn-xs btn-delete" %>
+	<%= link_to "Edit List?", edit_list_path(@list), class: "btn btn-xs btn-login sidebs" %>
+	<%= link_to "Delete List?", list_path(@list), method: :delete, class: "btn btn-xs btn-delete sidebs" %>
 <% end %>
 
