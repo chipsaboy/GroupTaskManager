@@ -12,14 +12,16 @@
 		<%= f.label "Assign a User" %>
 		<%= f.select :user_ids, User.all.collect {|t| [t.name, t.id]}, {}, {prompt: "Assign a User"} %>
 	</div>
+	<% if Tag.any? %>
+		<div>
+			<%= f.label "Choose from Current Tags" %>
+		</div>
+		<div>
+			<%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {}, :multiple => true %>
+		</div>
+	<% end %>
 	<div>
-		<%= f.label "Choose from Current Tags" %>
-	</div>
-	<div>
-		<%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {}, :multiple => true %>
-	</div>
-	<div>
-		<%= f.label "or Assign a New Tag:" %>
+		<%= f.label "Assign a New Tag:" %>
 		<%= f.fields_for :tags, task.tags.build do |tag_fields| %>
 			<%= tag_fields.text_field :name, class: "col-3 flex-sm-column form-control", placeholder: "New Tag"%>
     	<% end %>

@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = @list.tasks.build(task_params)
+    @task = @list.tasks.build(clean_params(task_params))
     if @task.save
       redirect_to list_path(@list), notice: "Task Successfully Created"
     else
@@ -23,7 +23,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task.update(task_params)
+    @task.update(clean_params(task_params))
     if @task.save
       redirect_to list_path(@list), notice: "Task Successfully Updated"
     else
@@ -50,4 +50,14 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:name, :state, :due_date, :list_id, :user_ids, users_attributes: [:name, :email], tag_ids:[], tags_attributes: [:name, :task_id])
   end
+
+  def clean_params(_params)
+    _params.delete_if do |k, v|
+      if v.instance_of?(ActionController::Parameters)
+        clean_params(v)
+      end
+      v.empty?
+    end
+  end
+
 end
