@@ -112,6 +112,17 @@ fieldset[disabled] .btn-login.active {
   border-color: #FFFFFF;
 }
 
+.sidebs {
+    float:left;
+    margin-right: 10px;
+}
+
+.db {
+    display: inline-block;
+    align: center;
+    padding: 15px;
+}
+
 /*flash*/
 .alert-error {
     background-color: #FF5964;
@@ -139,4 +150,14 @@ fieldset[disabled] .btn-login.active {
     border-color: #6BF178;
     color: #FFFFFF;
     text-align: left;
+ }
+
+ // Text Colors
+
+ #task-color {
+    color: #35A7FF;
+ }
+
+ #tag-color {
+     color: #FF5964;
  }
