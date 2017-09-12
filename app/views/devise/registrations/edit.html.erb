@@ -10,15 +10,15 @@
         <%= f.text_field :name, placeholder: "Username", class: "form-control input-lg" %>
       </div>
 
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control input-lg" %>
-      </div>
-
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
         <% if !facebooked %>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control input-lg" %>
+          </div>
+
           <div class="field">
             <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
             <%= f.password_field :password, autocomplete: "off", placeholder: "(6 characters minimum)", class: "form-control input-lg" %>
