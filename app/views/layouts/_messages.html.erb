@@ -2,9 +2,15 @@
   <div class="alert alert-<%= key %>">
     <a href="#" data-dismiss="alert" class="close">×</a>
       <ul>
-        <li>
-          <%= value %>
-        </li>
+      	<% if !key = notice %>
+	        <li>
+	          <%= value.to_sentence %>
+	        </li>
+	    <% else %>
+	    	<li>
+	          <%= value %>
+	        </li>
+	    <% end %>
       </ul>
   </div>
 <% end %>

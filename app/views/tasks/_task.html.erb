@@ -20,7 +20,7 @@
 			<%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {}, :multiple => true %>
 		</div>
 	<% end %>
-	<div>
+	<div class="field">
 		<%= f.label "Assign a New Tag:" %>
 		<%= f.fields_for :tags, task.tags.build do |tag_fields| %>
 			<%= tag_fields.text_field :name, class: "col-3 flex-sm-column form-control", placeholder: "New Tag"%>
