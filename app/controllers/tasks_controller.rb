@@ -1,9 +1,17 @@
 class TasksController < ApplicationController
-	before_action :find_list, except: [:index, :recent, :destroy]
+	before_action :find_list, except: [:my_tasks, :overdue, :complete_task, :completed, :destroy]
 	before_action :find_task, only: [:edit, :update]
 
   def index
-    @tasks = current_user.tasks
+    @tasks = @list.tasks.incomplete
+  end
+
+  def my_tasks
+    @tasks = current_user.tasks.incomplete
+  end
+
+  def new
+    @task = Task.new
   end
 
   def create
@@ -11,12 +19,13 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to list_path(@list), notice: "Task Successfully Created"
     else
-      redirect_to list_path(@list), alert: @task.errors.full_messages
+      render :new, alert: @task.errors.full_messages
     end
   end
 
-  def recent
-    @tasks = Task.recent_tasks
+  def overdue
+    user_tasks = current_user.tasks.incomplete
+    @tasks = user_tasks.overdue_tasks
   end
 
   def edit
@@ -31,10 +40,21 @@ class TasksController < ApplicationController
     end
   end
 
+  def complete_task
+    @task = Task.find(params[:id])
+    @task.state = 1
+    @task.save
+    redirect_to request.referrer, notice: "Task Completed"
+  end
+
+  def completed
+    @tasks = current_user.tasks.completed
+  end
+
   def destroy
     @task = Task.find(params[:id])
   	@task.destroy
-  	redirect_to request.referrer, notice: "Task Completed"
+  	redirect_to request.referrer, notice: "Task Deleted"
   end
 
   private

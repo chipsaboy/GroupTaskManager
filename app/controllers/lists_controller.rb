@@ -22,7 +22,7 @@ class ListsController < ApplicationController
   end
 
   def show
-  	@tasks = @list.tasks
+  	@tasks = @list.tasks.incomplete
   	@task = Task.new
   end
 
