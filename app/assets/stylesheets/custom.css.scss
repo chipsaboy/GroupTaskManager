@@ -159,5 +159,18 @@ fieldset[disabled] .btn-login.active {
  }
 
  #tag-color {
-     color: #FF5964;
+    color: #FF5964;
  }
+
+.field_with_errors input{
+    border: 1px solid red !important;
+}
+
+.badge {
+    text-shadow: none;
+    font-size: 12px;
+    padding: 1px 15px;
+    font-weight: normal;
+    line-height: 15px;
+    background-color: #FF5964!important;
+}

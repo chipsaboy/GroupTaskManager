@@ -7,9 +7,16 @@
 	        <div class="collapse navbar-collapse" id="navbarCodeply">
 	            <ul class="navbar-nav">
 	            	<% if current_user %>
-		                <li class="nav-item">
-		                    <a class="nav-link" href="/tasks">My Tasks</a>
-		                </li>
+		                 <li class="nav-item dropdown">
+					        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					          My Tasks
+					        </a>
+					        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					           <%= link_to "Incomplete", tasks_path, class: "dropdown-item" %>
+					           <%= link_to "Completed", tasks_completed_path, class: "dropdown-item" %>
+					           <%= link_to "Overdue", tasks_overdue_path, class: "dropdown-item" %>
+					        </div>
+				      	</li>
 		                <li class="nav-item dropdown">
 					        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					          Lists

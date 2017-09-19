@@ -6,4 +6,8 @@ module TasksHelper
 	def allowed_complete?(task)
 		task.users.exists?(name: current_user.name)
 	end
+
+	def completed?(task)
+		task.state == 1
+	end
 end
