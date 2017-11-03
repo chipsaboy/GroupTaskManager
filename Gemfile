@@ -36,6 +36,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'faker'
 gem 'figaro'
+gem 'flatpickr_rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

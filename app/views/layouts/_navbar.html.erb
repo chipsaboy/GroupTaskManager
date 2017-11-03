@@ -12,9 +12,9 @@
 					          My Tasks
 					        </a>
 					        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					           <%= link_to "Incomplete", tasks_path, class: "dropdown-item" %>
-					           <%= link_to "Completed", tasks_completed_path, class: "dropdown-item" %>
-					           <%= link_to "Overdue", tasks_overdue_path, class: "dropdown-item" %>
+					           <%= link_to "Incomplete", tasks_path, class: "dropdown-item" %><span class="badge badge-info"><%= current_tasks_incomplete %></span>
+					           <%= link_to "Completed", tasks_completed_path, class: "dropdown-item" %><span class="badge badge-info"><%= current_tasks_complete %></span>
+					           <%= link_to "Overdue", tasks_overdue_path, class: "dropdown-item" %><span class="badge badge-info"><%= current_tasks_overdue %></span>
 					        </div>
 				      	</li>
 		                <li class="nav-item dropdown">
