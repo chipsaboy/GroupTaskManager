@@ -6,7 +6,7 @@
 		<%= f.label :due_date %>
 	</div>
 	<div class="field">
-		<%= f.datetime_select :due_date, ampm: true %>
+		<%= f.text_field :due_date, id: "flatpickr-input" %>
 	</div><br>
 	<div class="dropdown">
 		<%= f.label "Assign a User" %>

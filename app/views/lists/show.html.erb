@@ -1,18 +1,21 @@
-<%= render partial: 'lists/errors', locals: { object: @list, nested_models: @list.tasks } %>
+<%= render partial: 'lists/errors', locals: {object: @list, nested_models: @list.tasks} %>
 <h2><%= @list.name %></h2>
-<%= render partial: 'tasks/task', locals: { :list => @list, :task => @task } %>
+<%= render partial: 'tasks/task', locals: {:list => @list, :task => @task} %>
 
 <br>
 <div class="ui doubling stackable grid container">
-	<h2>Current Tasks:</h2><br>
-	<div class="ui relaxed divided items">
-		<%= render partial: 'tasks/index', locals: { :task => @task } %>
-		<br>
-	</div>
+  <h2>Current Tasks:</h2><br>
+  <div class="ui relaxed divided items">
+    <%= render partial: 'tasks/index', locals: {:task => @task} %>
+    <br>
+  </div>
 </div>
 
 <% if @list.user_id == current_user.id %>
-	<%= link_to "Edit List?", edit_list_path(@list), class: "btn btn-xs btn-login sidebs" %>
-	<%= link_to "Delete List?", list_path(@list), method: :delete, class: "btn btn-xs btn-delete sidebs" %>
+  <%= link_to "Edit List?", edit_list_path(@list), class: "btn btn-xs btn-login sidebs" %>
+  <%= link_to "Delete List?", list_path(@list), method: :delete, class: "btn btn-xs btn-delete sidebs" %>
 <% end %>
 
+<% if current_tasks_complete %>
+  <h1>All current tasks are complete</h1>
+<% end %>
