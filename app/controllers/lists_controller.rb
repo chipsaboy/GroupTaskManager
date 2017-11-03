@@ -5,6 +5,10 @@ class ListsController < ApplicationController
   def index
     @lists = List.all
     @list = List.new
+    respond_to do |f|
+      f.html { lists_path(@lists) }
+      f.json { render json: @lists }
+    end
   end
 
   def new
@@ -24,6 +28,10 @@ class ListsController < ApplicationController
   def show
   	@tasks = @list.tasks.incomplete
   	@task = Task.new
+    respond_to do |f|
+      f.html { list_task_path(@task) }
+      f.json { render json: @tasks }
+    end
   end
 
   def edit
