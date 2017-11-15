@@ -36,3 +36,19 @@ Task.prototype.renderTask = function() {
 	</div>
 	`
 };
+
+Task.newTask = function(e) {
+	e.preventDefault()
+	var $form = $(this)
+	var action = $form.attr("action")
+	var params = $form.serialize()
+
+	$.post(action, params, Task.success, "json")
+}
+
+Task.success = function(json) {
+	var task = new Task(json)
+	var taskDiv = task.renderTask()
+
+	$("div.ui relaxed divided items").append(taskDiv)
+}
