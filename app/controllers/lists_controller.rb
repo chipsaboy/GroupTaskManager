@@ -29,7 +29,7 @@ class ListsController < ApplicationController
   	@tasks = @list.tasks.incomplete
   	@task = Task.new
     respond_to do |f|
-      f.html { list_task_path(@task) }
+      f.html { list_path(@tasks) }
       f.json { render json: @tasks }
     end
   end

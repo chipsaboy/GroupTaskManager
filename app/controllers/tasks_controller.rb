@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   def index
     @tasks = @list.tasks.incomplete
     respond_to do |f|
-      f.html { list_task_path(@task) }
+      f.html { list_path(@tasks) }
       f.json { render json: @tasks }
     end
   end
