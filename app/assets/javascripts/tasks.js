@@ -16,3 +16,23 @@ Task.timeRemaining = function() {
 	return diffDays;
 };
 
+Task.prototype.renderTask = function() {
+	return `
+	<div class="item db card">
+		<h4 id="task-color">
+				<a href="/lists/${this.list_id}/tasks/${this.id}/edit">${this.name}</a>
+		</h4>
+		<p>Due Date: ${Date.parse(this.due_date)}
+		   	   ||
+			   		Time remaining: ${Task.timeRemaining()} day(s)
+		</p>
+			<p>Assigned to:
+					brian1988
+			</p>
+		<p id="task-color">
+				<span class="badge badge-info">Back Yard</span>
+				<span class="badge badge-info">New</span>
+		</p>
+	</div>
+	`
+};
