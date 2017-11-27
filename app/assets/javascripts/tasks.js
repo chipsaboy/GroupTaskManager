@@ -8,6 +8,10 @@ function Task(attributes) {
 	this.tags = []
 }
 
+$(function() {
+    newTask();
+});
+
 $(function(){
     flatpickr('#flatpickr-input', {
     	enableTime: true, altInput: true
