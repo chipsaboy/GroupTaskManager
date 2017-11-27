@@ -10,16 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery3
 //= require popper
-//= require bootstrap-sprockets
-//= require jquery_ujs
 //= require turbolinks
 //= require flatpickr
+//= require strftime-min
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap-sprockets
 //= require_tree .
-
-$(document).ready(function(){
-    flatpickr('#flatpickr-input', {
-    	enableTime: true, altInput: true
-    });
-});
