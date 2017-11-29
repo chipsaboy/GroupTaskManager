@@ -56,7 +56,18 @@ Task.prototype.removeTask = function() {
 }
 
 Task.completeTask = function(event) {
+  event.preventDefault()
+  var $form = $(this).parent("form")
+  var action = $form.attr("action")
+  var params = $form.serialize()
 
+  $.ajax({
+    url: action,
+    data: params,
+    dataType: "json",
+    method: "POST"
+  })
+  .success(Task.removeTask)
 }
 
 function newTaskListener = function() {
