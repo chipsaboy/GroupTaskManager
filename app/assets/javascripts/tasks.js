@@ -14,6 +14,7 @@ $(function() {
 
 Task.ready = function() {
 	Task.newTaskListener()
+	Task.completeTaskListener()
 }
 
 Task.error = function(response) {
