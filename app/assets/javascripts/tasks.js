@@ -20,6 +20,13 @@ Task.error = function(response) {
     console.log("Oops, something went wrong.", response)
 }
 
+Task.success = function(json) {
+  var task = new Task(json)
+  var taskCard = task.renderTask()
+
+  $("div.ui.relaxed.divided.items").append(taskCard)
+}
+
 function newTaskListener = function() {
 	$("form#new_task").on('submit', Task.newTask)
 }
