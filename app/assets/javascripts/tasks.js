@@ -1,4 +1,4 @@
-function Task(attributes) {
+function Task(attr) {
 	this.id = attr.id
 	this.name = attr.name
 	this.state = attr.state
@@ -12,21 +12,24 @@ $(function() {
     newTask();
 });
 
-function newTask() {
-    $("form#new_task").on('submit', function(event) {
-	    event.preventDefault();
-	    var params = $(this).serialize();
-	    var action = this.action;
+function newTaskListener = function() {
+	$("form#new_task").on('submit', Task.newTask)
+}
 
-	    $.ajax ({
-	        url: action,
-	        method: 'POST',
-	        data: params,
-	        dataType: 'json'
-	    })
-	    .success(Task.success)
-	    .error(Task.error);
-    });
+Task.newTask = function(event) {
+    event.preventDefault()
+    var $form = $(this)
+    var action = $form.attr("action")
+	var params = $form.serialize()
+
+    $.ajax ({
+        url: action,
+        method: 'POST',
+        data: params,
+        dataType: 'json'
+    })
+    .success(Task.success)
+    .error(Task.error)
 }
 
 $(function(){
