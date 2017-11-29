@@ -9,8 +9,12 @@ function Task(attr) {
 }
 
 $(function() {
-    newTask();
-});
+    Task.ready()
+})
+
+Task.ready = function() {
+	Task.newTaskListener()
+}
 
 function newTaskListener = function() {
 	$("form#new_task").on('submit', Task.newTask)
