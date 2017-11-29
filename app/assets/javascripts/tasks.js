@@ -47,6 +47,10 @@ Task.prototype.renderTask = function() {
   `
 }
 
+Task.prototype.$card = function() {
+  return $("div#task-"+this.id)
+}
+
 function newTaskListener = function() {
 	$("form#new_task").on('submit', Task.newTask)
 }
