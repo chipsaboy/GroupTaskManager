@@ -16,6 +16,10 @@ Task.ready = function() {
 	Task.newTaskListener()
 }
 
+Task.error = function(response) {
+    console.log("Oops, something went wrong.", response)
+}
+
 function newTaskListener = function() {
 	$("form#new_task").on('submit', Task.newTask)
 }
