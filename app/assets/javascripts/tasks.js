@@ -55,6 +55,10 @@ Task.prototype.removeTask = function() {
   this.$card.remove()
 }
 
+Task.completeTask = function(event) {
+
+}
+
 function newTaskListener = function() {
 	$("form#new_task").on('submit', Task.newTask)
 }
