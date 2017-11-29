@@ -1,43 +1,22 @@
-<div class="ui relaxed divided items">
 <% if @tasks.any? %>
 	<% @tasks.each do |task| %>
 	<div class="item db card">
 		<h4 id="task-color">
-			<% if !completed?(task) %>
-				<%= link_to task.name, edit_list_task_path(id: task.id, list_id: task.list.id) %>
-			<% else %>
-				<%= task.name %>
-			<% end %>
+			<%= link_to task.name, edit_list_task_path(id: task.id, list_id: task.list.id) %>
 		</h4>
-		<p>Due Date: <%= pretty_date(task.due_date) %>
-		   <% if !completed?(task) %>
-		   	   ||
-			   <% if task.due_date > DateTime.now %>
-			   		Time remaining: <%= time_remaining(task.due_date) %>
-			   <% else %>
-			   		Time remaining: Expired
-			   <% end %>
-			<% end %>
+		<p>Due Date: <%= task.due_date %>
 		</p>
-		<% if !allowed_complete?(task) %>
 			<p>Assigned to:
 				<% task.users.each do |u| %>
 					<%= u.name %>
 				<% end %>
-			</p>
-		<% end %>
+		</p>
 		<p id="task-color">
 			<% task.tags.each do |t| %>
 				<span class="badge badge-info"><%= t.name %></span>
 			<% end %>
 		</p>
-		<% if allowed_complete?(task) %>
-			<% if !completed?(task) %>
-				<%= button_to "Completed?", complete_list_task_path(id: task.id, list_id: task.list.id), class: "btn btn-xs btn-login sidebs", method: :put, data: {confirm: "Are you sure?"} %>
-			<% else %>
-				<%= button_to "Delete", list_task_path(id: task.id, list_id: task.list.id), class: "btn btn-xs btn-login sidebs", method: :delete, data: {confirm: "Are you sure you want to delete task #{task.name}?"} %>
-			<% end %>
-		<% end %>
+			<%= button_to "Done", complete_list_task_path(id: task.id, list_id: task.list.id), class: "btn btn-xs btn-login sidebs", method: :put, data: {confirm: "Are you sure?"} %>
 	</div>
 	<br>
 	<br>
@@ -45,4 +24,3 @@
 <% else %>
 	<h5>No Current Tasks</h5>
 <% end %>
-</div>
