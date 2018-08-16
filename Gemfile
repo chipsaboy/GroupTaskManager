@@ -33,8 +33,6 @@ gem 'active_model_serializers'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-gem 'omniauth'
-gem 'omniauth-facebook'
 gem 'faker'
 gem 'figaro'
 gem 'flatpickr_rails'

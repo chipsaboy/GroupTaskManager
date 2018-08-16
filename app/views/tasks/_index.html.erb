@@ -1,6 +1,6 @@
 <% if @tasks.any? %>
 	<% @tasks.each do |task| %>
-	<div class="item db card">
+	<div class="item db card" id="task-<%= task.id %>">
 		<h4 id="task-color">
 			<%= link_to task.name, edit_list_task_path(id: task.id, list_id: task.list.id) %>
 		</h4>
